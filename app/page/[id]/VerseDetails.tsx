@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 // import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Modal from "./Modal";
-import Tab from "./tabs";
+import Tab from "./Tabs";
 
 export default function DisplayVerseDetails({ word }: any) {
     // const router = useRouter();
