@@ -1,9 +1,10 @@
 import "./Page-modules.css"
 import QuranPage from "./QuranPage";
 
-export default async function App({params: { id }}: any) {
+export default function App({params: { id }}: any) {
     return (
         <>
+            {/*@ts-expect-error*/}
             <QuranPage page={id} />
         </>
     )
