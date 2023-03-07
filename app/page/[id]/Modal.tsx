@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 
 interface VerseModalProps {
-    children: typeof React.Children | typeof React.Child;
+    children: React.ReactNode;
     isOpen: boolean;
     handleClose: () => void;
 }
