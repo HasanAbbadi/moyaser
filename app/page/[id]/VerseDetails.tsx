@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Modal from "./Modal";
 import Tab from "./Tabs";
@@ -52,9 +52,9 @@ export default function DisplayVerseDetails({ word }: any) {
                 name: "Meanings",
                 content: (
                     <>
-                        {json.meanings.map((meaning: any) => {
+                        {json.meanings.map((meaning: any, i: number) => {
                             return (
-                                <div className={'details-list'}>
+                                <div key={i} className={'details-list'}>
                                     <h4>{meaning.words}</h4>
                                     <p>{meaning.meaning}</p>
                                 </div>
@@ -68,9 +68,9 @@ export default function DisplayVerseDetails({ word }: any) {
                 name: "Reflections",
                 content: (
                     <>
-                        {json.reflections.map((ref: any) => {
+                        {json.reflections.map((ref: any, i: number) => {
                             return (
-                                <div className={'details-list'}>
+                                <div key={i} className={'details-list'}>
                                     <h4 className={ref.type}>{ref.type}</h4>
                                     <p>{ref.reflection}</p>
                                 </div>
