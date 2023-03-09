@@ -1,4 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@100;400&display=swap");
+
+@font-face {
+  font-family: "Mushaf";
+  src: url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.eot")
+      format("eot"),
+    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.svg")
+      format("svg"),
+    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.ttf")
+      format("truetype"),
+    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.woff2")
+      format("woff2");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: black;
-  color: white
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+#body-wrapper {
+  position: relative;
+  height: auto;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  transform: translateX(-90%);
+  transition: transform 0.5s ease;
+  margin: auto;
+  height: 100%;
+  z-index: 99;
+}
+
+.color-picker:after {
+  content: '';
+  color: var(--text);
+  right: 5px;
+  transform: translateY(-50%);
+  position: absolute;
+  background-color: var(--text);
+  height: 10%;
+  width: 3px;
+  border-radius: 5px;
+  opacity: 0.3;
+  display: none;
+}
+
+.color-picker:hover {
+  transform: translateX(0%);
+}
+
+.color-picker > fieldset {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  gap: 2rem;
+  background: var(--light-background);
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 3px;
+  width: 60px;
+  margin-inline: auto;
+  border-radius: 0rem 1rem 1rem 0rem;
+}
+
+.color-picker input[type="radio"] {
+  position: inherit;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  outline: 3px solid var(--radio-color, currentColor);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+.color-picker input[type="radio"]:checked {
+  background-color: var(--radio-color, currentColor);
 }

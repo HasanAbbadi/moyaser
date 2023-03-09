@@ -3,7 +3,8 @@ import DisplayVerseDetails from "./VerseDetails";
 const mainApi = 'https://moyaser-api.vercel.app'
 
 async function getPage(pageNum: number) {
-    const res = await fetch(`${mainApi}/page/${pageNum}?format=line`);
+    console.log(pageNum)
+    const res = await fetch(`${mainApi}/page/${pageNum}?format=line_number`);
     return await res.json();
 }
 
@@ -40,7 +41,7 @@ export default async function QuranPage({ page }: any) {
     let chapters = await getPage(page)
 
     return (
-        <div className="mainDiv">
+        <div className={"page-container"}>
             {chapters?.map((chapter: any, i: number) => {
                 return <Chapter key={i} chapter={chapter} />
             })}

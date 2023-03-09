@@ -11,28 +11,29 @@ export default function DisplayVerseDetails({ word }: any) {
     const [verseModalOpen, setVerseModalOpen] = useState(false)
     const [data, setData] = useState<any>(null)
 
-
-
-    async function handleClick(e: any) {
+    function handleHover(e: any) {
         const key: string = e.target.className.split(' ')[1]
         const collection = document.getElementsByClassName(key);
         const elements: Array<any> = Array.from(collection)
 
-        const activeCollection = document.getElementsByClassName('active')
-        const activeElements: Array<any> = Array.from(activeCollection);
+        const hoverCollection = document.getElementsByClassName('hover')
+        const hoverElements: Array<any> = Array.from(hoverCollection);
 
         elements.forEach(element => {
-            if (element.classList.contains("active")) {
-                element.classList.remove('active')
+            if (element.classList.contains("hover")) {
+                element.classList.remove('hover')
             } else {
-                element.classList.add('active')
+                element.classList.add('hover')
             }
         });
 
-        activeElements.forEach(element => {
-            element.classList.remove("active")
+        hoverElements.forEach(element => {
+            element.classList.remove("hover")
         })
 
+    }
+
+    async function handleClick(e: any) {
         setVerseModalOpen(!verseModalOpen)
         console.log(word.verse_id)
         const res = await fetch(`https://api.hefzmoyaser.net/verses/${word.verse_id}/interactions`)
@@ -98,9 +99,11 @@ export default function DisplayVerseDetails({ word }: any) {
             <p
                 // onClick={() => { router.push(pathname + '?id=' + word.verse_id) }}
                 onClick={handleClick}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
                 className={`${word.char_type_name} ${word.verse_key} section-${word.section}`}
                 style={{ backgroundColor: `var(--${word.color_code})` }}>
-                {word.text_uthmani}
+                {word.text_qpc_hafs}
             </p>
         </>
     )

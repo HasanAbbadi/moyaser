@@ -1,0 +1,155 @@
+:root,
+:root:has(#nord-light:checked) {
+  --quran-font: "Mushaf";
+  --text: black;
+  --text-shadow: 0px;
+  --highlight: #835800;
+  --light-background: #eceff4;
+  --background: #d8dee9;
+  --section-2: #cddaea;
+  --red: #bf616a;
+  --orange: #d08770;
+  --yellow: #ebcb8b;
+  --green: #a3be8c;
+  --cyan: #88c0d0;
+  --blue: #81a1c1;
+  --purple: #b48ead;
+  --pink: #b48ead;
+  --end: #81a1c1;
+}
+
+.color-picker input[type="radio"]#nord-light {
+  --radio-color: #cddaea;
+}
+
+:root:has(#nord-dark:checked) {
+  --text: #dde4f0;
+  --text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  --highlight: #ffbf3e;
+  --background: #2e3440;
+  --light-background:#434c5e;
+  --section-2: rgba(135, 152, 190, 0.15);
+  --red: #bf616a;
+  --orange: #d08770;
+  --yellow: #ebcb8b;
+  --green: #a3be8c;
+  --cyan: #88c0d0;
+  --blue: #81a1c1;
+  --purple: #b48ead;
+  --pink: #b48ead;
+  --end: #81a1c1;
+}
+
+.color-picker input[type="radio"]#nord-dark {
+  --radio-color: #81a1c1;
+}
+
+:root:has(#gruvbox-dark:checked) {
+  --text: whitesmoke;
+  --text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  --background: #32302f;
+  --light-background: #3c3836;
+  --section-2: #504945;
+  --text: #ebdbb2;
+  --red: #cc2412;
+  --green: #98971a;
+  --yellow: #d79921;
+  --blue: #458588;
+  --purple: #b16286;
+  --aqua: #689d6a;
+  --gray: #a89984;
+  --orange: #d65d0e;
+}
+
+.color-picker input[type="radio"]#gruvbox-dark {
+  --radio-color: #d79921;
+}
+
+:root:has(#gruvbox-light:checked) {
+  --light-background: #fbf1c7;
+  --background: #f2e5bc;
+  --section-2: #ebdbb2;
+  --text: #3c3836;
+  --red: #cc2412;
+  --green: #98971a;
+  --yellow: #d79921;
+  --blue: #458598;
+  --purple: #c17396;
+  --aqua: #689d6a;
+  --orange: #d65d0e;
+  --gray: #acacac;
+}
+
+.color-picker input[type="radio"]#gruvbox-light {
+  --radio-color: #ebdbb2;
+}
+
+:root:has(#monokai-dark:checked) {
+  --background: #1d1e19;
+  --light-background: #494b40;
+  --section-2: #5153484f;
+  --highlight: #e4db73;
+  --text: #fdfff1;
+  --blue: #fc961f;
+  --blue: #66d9ee;
+  --green: #a6e12d;
+  --purple: #ae81ff;
+  --pink: #ae81ff;
+  --red: #f82570;
+  --yellow: #e4db73;
+}
+
+:root:has(#dracula-dark:checked) {
+  --background: #282a36;
+  --light-background: #44475a;
+  --section-2: #313341;
+  --text: #f8f8f2;
+  --text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  --blue: #6272a4;
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
+}
+
+.color-picker input[type="radio"]#dracula-dark {
+  --radio-color: #bd93f9;
+}
+
+:root:has(#monokai-light:checked) {
+  --background: #6e7066;
+  --light-background: #919485;
+  --section-2: #919485;
+  --highlight: #e4db73;
+  --text: #fdfff1;
+  --orange: #fc961f;
+  --blue: #66d9ee;
+  --green: #a6e12d;
+  --purple: #ae81ff;
+  --pink: #ae81ff;
+  --red: #f82570;
+  --yellow: #e4db73;
+}
+
+/* 
+:root:has(#monokai-dark:checked) {
+  --text: whitesmoke;
+  --background: rgb(16, 16, 16);
+  --light-background: rgb(46, 46, 46);
+  --section-2: rgb(22, 22, 22);
+  --highlight: rgb(255, 232, 102);
+  --pink: rgb(176, 82, 121);
+  --white: rgb(214, 214, 214);
+  --yellow: rgb(229, 181, 103);
+  --green: rgb(180, 210, 115);
+  --orange: rgb(232, 125, 62);
+  --purple: rgb(158, 134, 200);
+  --pink: rgb(176, 82, 121);
+  --blue: rgb(108, 153, 187);
+} */

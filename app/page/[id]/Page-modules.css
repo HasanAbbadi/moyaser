@@ -1,81 +1,58 @@
-@import url("https://fonts.googleapis.com/css2?family=Amiri&family=Amiri+Quran&family=Montserrat:wght@100;400&display=swap");
-
-@font-face {
-  font-family: "Quran Majeed";
-  src: url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/al-qalam-quran.eot")
-      format("eof"),
-    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/al-qalam-quran.svg")
-      format("svg"),
-    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/al-qalam-quran.ttf")
-      format("truetype"),
-    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/al-qalam-quran.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/al-qalam-quran.woff2")
-      format("woff2");
-}
-
-@font-face {
-  font-family: "Test";
-  src: url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.eot") format('eot'),
-  url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.svg") format('svg'),
-  url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.ttf") format('truetype'),
-  url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.woff") format('woff'),
-  url("https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/fonts/uthmanic-hafs1-ver14.woff2") format('woff2')
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --quran-font: 'Test';
-  /* --background: rgb(16, 16, 16);
-  --light-background: rgb(46, 46, 46);
-  --highlight: rgb(255, 232, 102);
-  --pink: rgb(176, 82, 121);
-  --white: rgb(214, 214, 214);
-  --yellow: rgb(229, 181, 103);
-  --green: rgb(180, 210, 115);
-  --orange: rgb(232, 125, 62);
-  --purple: rgb(158, 134, 200);
-  --pink: rgb(176, 82, 121);
-  --blue: rgb(108, 153, 187); */
-  --light-background: #eceff4;
-  --background: #d8dee9;
-  --section-2: #cddaea;
-	--red:#BF616A;
-	--orange:#D08770;
-	--yellow:#EBCB8B;
-	--green:#A3BE8C;
-	--cyan:#88C0D0;
-	--blue:#81A1C1;
-	--purple:#B48EAD;
-	--pink:#B48EAD;
-  --end: #81a1c1;
-}
-
 body {
   background-color: var(--background) !important;
-  color: black !important;
+  color: var(--text) !important;
 }
 
-.mainDiv {
+#wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 0rem;
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 3px);
+  margin: 20px;
+  position: inherit;
+  z-index: 1;
+}
+
+.page-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  background-color: var(--light-background);
+  padding: 10px;
+  max-width: 500px;
+  min-width: 300px;
+}
+
+#wrapper .page-container:nth-child(1) {
+  border-radius: 20px 10px 10px 20px;
+  background: linear-gradient(90deg, var(--light-background) 84%, var(--background) 97%);
+}
+
+#wrapper .page-container:nth-child(2) {
+  border-radius: 10px 20px 20px 10px;
+  background: linear-gradient(-90deg, var(--light-background) 84%, var(--background) 97%);
+  position: relative;
+}
+
+#wrapper .page-container:nth-child(2):before {
+  content: '';
+  height: 97%;
+  position: absolute;
+  top: 8px;
+  left: -2.5px;
+  width: 5px;
+  background-color: var(--light-background);
+  opacity: 0.3;
+}
+
+.page-container:only-child {
+  border-radius: 20px;
 }
 
 .chapter-container {
   font-family: var(--quran-font);
-  background-color: var(--light-background);
   color: var(--white);
-  border-radius: 20px;
-  padding: 10px 0px;
-  margin: 15px;
-  max-height: 100%;
-  box-shadow: 0px 0px 10px grey;
 }
 
 .line-container {
@@ -86,45 +63,55 @@ body {
   gap: 0px;
   cursor: pointer;
   width: auto;
+  flex-wrap: wrap;
 }
 
 .line-container:has(.section-2) {
-  background-color: var(--section-2)
+  background: linear-gradient(
+    90deg,
+    var(--section-2) 98%,
+    var(--background) 100%
+  );
 }
-.line-container:has(.section-3) {
-  background-color: var(--section-3)
+
+#wrapper .page-container:nth-child(2) .line-container:has(.section-2) {
+  background: linear-gradient(
+    -90deg,
+    var(--section-2) 98%,
+    var(--background) 100%
+  );
 }
 
 .word {
-  padding: 0px 0px;
+  padding: 0px 2px;
   margin: 2px 0px;
+  text-shadow: var(--text-shadow);
   /* text-shadow: 2px 2px 10px black; */
   /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, */
-    /* 1px 1px 0 #000; */
+  /* 1px 1px 0 #000; */
   font-size: 16pt;
 }
 
 .end {
-  background-color: var(--end) !important;
   padding: 5px;
-  font-family: "Amiri";
+  font-size: 18pt;
 }
 
-.word.active {
-  color: var(--highlight) !important;
+.word.hover {
+  color: var(--highlight);
 }
+
 
 .modal {
-  z-index: 30;
   cursor: default;
   direction: ltr;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  font-family: 'Amiri';
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.15);
+  font-family: "Amiri";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,7 +126,7 @@ body {
   background-color: var(--yellow);
   color: var(--light-background);
   cursor: pointer;
-  text-align: center
+  text-align: center;
 }
 
 .modal-content {
@@ -152,31 +139,31 @@ body {
   box-shadow: 5px 5px 15px black;
 }
 
-.tab .tab-list{
-    padding-bottom: 5px;
-    margin-top: 10px;
-    border-bottom: 2px solid var(--background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tab .tab-list {
+  padding-bottom: 5px;
+  margin-top: 10px;
+  border-bottom: 2px solid var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.tab .tab-item{
-    display: inline-block;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 10px;
+.tab .tab-item {
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.tab .tab-item.active{
-    background-color: var(--background);
+.tab .tab-item.active {
+  background-color: var(--background);
 }
 
-.tab .tab-container{
-    display:block;
-    height: 250px;
-    overflow-y: scroll;
-    scroll-snap-type: y proximity;
+.tab .tab-container {
+  display: block;
+  height: 250px;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
 }
 
 .tab .tab-content{
@@ -220,6 +207,16 @@ body {
 }
 
 @media only screen and (max-width: 450px) {
+  #wrapper {
+    overflow-x: scroll;
+    width: 90vw;
+    gap: 1rem;
+  }
+
+  .page-container {
+    width: auto;
+  }
+
   .chapter-container {
     width: 100%;
   } 
