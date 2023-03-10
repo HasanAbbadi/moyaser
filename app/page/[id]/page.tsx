@@ -37,7 +37,7 @@ export default async function App({ params: { id } }: any) {
 
     return (
         <>
-            <QuranPage pages={pages} numbers={numbers} />
+            <QuranPage pages={pages} numbers={numbers} reversedNumbers={numbers.reverse()} />
         </>
     )
 }

@@ -19,7 +19,7 @@ function Chapter({ chapter, setSelectedVerseId, playingVerseId }: any) {
     )
 }
 
-export default function QuranPage({ pages, numbers }: any) {
+export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
     const [selectedVerseId, setSelectedVerseId] = useState<number>(0)
     const [playingVerseId, setPlayingVerseId] = useState<number>(0)
 
@@ -32,7 +32,7 @@ export default function QuranPage({ pages, numbers }: any) {
                         return (
                             <div key={i} className={"page-container"}>
                                 <Chapter key={i} chapter={chapter} {...{setSelectedVerseId, playingVerseId}} />
-                                <code>{numbers[i]}</code>
+                                <code>{reversedNumbers[i]}</code>
                             </div>
                         )
                     })

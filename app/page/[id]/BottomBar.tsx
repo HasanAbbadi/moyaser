@@ -146,7 +146,6 @@ export default function BottomPlayer({ pages, selectedVerseId, setPlayingVerseId
             fetch(url).then(resp => resp.json())
         )).then((data: any) => {
             let all:Array<any> = data[0].data.ayahs.concat(data[1].data.ayahs)
-            console.log(all)
             setAyat(all)
             setAyah(all[ayahIndex])
         })
