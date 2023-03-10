@@ -1,12 +1,16 @@
 'use client'
 import { useEffect, useRef, useState } from "react";
 // icons
+
 import {
-    IoPlayBackSharp,
-    IoPlayForwardSharp,
-    IoPlaySharp,
-    IoPauseSharp,
-} from 'react-icons/io5';
+    BsPlayFill,
+    BsPauseFill
+} from 'react-icons/bs'
+
+import {
+    AiFillBackward,
+    AiFillForward
+} from 'react-icons/ai'
 
 const audioApi = 'https://api.alquran.cloud/v1/page'
 const reciter = 'ar.abdullahbasfar'
@@ -60,9 +64,9 @@ const Controls = ({ audioRef, ayat, ayahIndex, setAyahIndex, setAyah, isPlaying,
     return (
         <div className="controls-wrapper">
             <div className="controls">
-                <button type="button" onClick={handlePrevious} title="playBack"> <IoPlayBackSharp /> </button>
-                <button type="button" onClick={togglePlayPause} title="play" id="playPauseButton"> {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />} </button>
-                <button type="button" onClick={handleNext} title="playForward"> <IoPlayForwardSharp /> </button>
+                <button type="button" onClick={handlePrevious} title="playBack"> <AiFillBackward /> </button>
+                <button type="button" onClick={togglePlayPause} title="play" id="playPauseButton"> {isPlaying ? <BsPauseFill /> : <BsPlayFill />} </button>
+                <button type="button" onClick={handleNext} title="playForward"> <AiFillForward /> </button>
             </div>
             <div className="volume-controls slidecontainer">
                 <input

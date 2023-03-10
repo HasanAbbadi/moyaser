@@ -2,6 +2,7 @@
 :root:has(#nord-light:checked) {
   --quran-font: "Mushaf";
   --text: black;
+  --box-shadow: rgba(0, 0, 0, 0.3) 0 2px 3px;
   --text-shadow: 0px;
   --highlight: #835800;
   --playing: #a3be8c;

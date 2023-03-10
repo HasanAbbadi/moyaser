@@ -1,4 +1,4 @@
-import "./Page-modules.css"
+import "./styles.css"
 import QuranPage from "./QuranPage";
 
 function findPage(pageNum: any) {

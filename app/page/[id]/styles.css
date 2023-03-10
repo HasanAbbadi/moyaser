@@ -25,17 +25,25 @@ body {
 
 #wrapper .page-container:nth-child(1) {
   border-radius: 20px 10px 10px 20px;
-  background: linear-gradient(90deg, var(--light-background) 84%, var(--background) 97%);
+  background: linear-gradient(
+    90deg,
+    var(--light-background) 84%,
+    var(--background) 97%
+  );
 }
 
 #wrapper .page-container:nth-child(2) {
   border-radius: 10px 20px 20px 10px;
-  background: linear-gradient(-90deg, var(--light-background) 84%, var(--background) 97%);
+  background: linear-gradient(
+    -90deg,
+    var(--light-background) 84%,
+    var(--background) 97%
+  );
   position: relative;
 }
 
 #wrapper .page-container:nth-child(2):before {
-  content: '';
+  content: "";
   height: 97%;
   position: absolute;
   top: 8px;
@@ -101,16 +109,15 @@ body {
 }
 
 .word.playing {
-  text-shadow: -0.5px -0.5px 0 var(--playing), 0.5px -0.5px 0 var(--playing), -0.5px 0.5px 0 var(--playing),
-    0.5px 0.5px 0 var(--playing);
+  text-shadow: -0.5px -0.5px 0 var(--playing), 0.5px -0.5px 0 var(--playing),
+    -0.5px 0.5px 0 var(--playing), 0.5px 0.5px 0 var(--playing);
 }
-
 
 .modal {
   cursor: default;
   direction: ltr;
   position: fixed;
-  z-index: 200;
+  z-index: 300;
   top: 0;
   left: 0;
   height: 100%;
@@ -121,28 +128,17 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 20px;
-}
-
-.modal button {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  padding: 30px;
-  background-color: var(--yellow);
-  color: var(--light-background);
-  cursor: pointer;
-  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .modal-content {
   background-color: var(--light-background);
-  width: 50%;
+  width: 30%;
   height: 50%;
   top: 0;
   left: 0;
   border-radius: 10px;
-  box-shadow: 5px 5px 15px black;
+  box-shadow: var(--box-shadow);
 }
 
 .tab .tab-list {
@@ -172,14 +168,14 @@ body {
   scroll-snap-type: y proximity;
 }
 
-.tab .tab-content{
-    display: none;
-    direction: rtl;
+.tab .tab-content {
+  display: none;
+  direction: rtl;
 }
 
-.tab .tab-content.active{
-    display: block;
-    padding: 10px 15px;
+.tab .tab-content.active {
+  display: block;
+  padding: 10px 15px;
 }
 
 .details-list {
@@ -197,19 +193,52 @@ body {
 }
 
 .waqfa {
-  color: var(--yellow)
+  color: var(--yellow);
 }
 
 .work {
-  color: var(--green)
+  color: var(--green);
 }
 
 .react {
-  color: var(--orange)
+  color: var(--orange);
 }
 
 .lamsa {
-  color: var(--pink)
+  color: var(--pink);
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  position: absolute;
+  z-index: 300;
+  background-color: var(--background);
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: var(--box-shadow);
+  transition: all 0.15s ease;
+  opacity: 0.7;
+}
+
+.popup:hover {
+  opacity: 1;
+}
+
+.popup button {
+  cursor: pointer;
+  color: var(--cyan);
+  background: none;
+  border-radius: 100%;
+  border: 0;
+  font-size: 18pt;
+}
+
+.popup button:hover {
+  color: var(--blue);
 }
 
 #audio-player {
@@ -222,7 +251,7 @@ body {
   margin: auto;
   width: 100%;
   z-index: 200;
-  font-family: 'Amiri';
+  font-family: "Amiri";
 }
 
 #audio-player:hover {
@@ -240,11 +269,11 @@ body {
   padding: 20px;
   padding-bottom: 10px;
   width: auto;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 3px;
+  box-shadow: var(--box-shadow);
 }
 
 #audio-player > .inner:before {
-  content: '';
+  content: "";
   color: var(--text);
   top: 5px;
   position: absolute;
@@ -257,11 +286,10 @@ body {
 
 #audio-player > .inner > .controls-wrapper {
   display: flex;
-  justify-content: center ;
+  justify-content: center;
   align-items: center;
   gap: 20px;
 }
-
 
 #audio-player .controls {
   display: flex;
@@ -288,7 +316,7 @@ body {
 }
 
 #audio-player #playPauseButton:hover {
-  background-color: var(--blue)
+  background-color: var(--blue);
 }
 
 #audio-player .slidecontainer {
@@ -302,8 +330,8 @@ body {
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 #audio-player .slider:hover {
@@ -330,7 +358,7 @@ body {
   #wrapper {
     width: 90vw;
     gap: 1rem;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .page-container {
@@ -339,9 +367,14 @@ body {
 
   .chapter-container {
     width: 100%;
-  } 
+  }
 
   .word {
-    font-size: 4.7vw
+    font-size: 4.7vw;
+  }
+
+  .modal-content {
+    width: 80%;
+    height: 40%;
   }
 }
