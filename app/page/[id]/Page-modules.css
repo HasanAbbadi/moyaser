@@ -221,7 +221,7 @@ body {
   transform: translateY(80%);
   margin: auto;
   width: 100%;
-  z-index: 99;
+  z-index: 200;
   font-family: 'Amiri';
 }
 
@@ -328,9 +328,9 @@ body {
 
 @media only screen and (max-width: 450px) {
   #wrapper {
-    overflow-x: scroll;
     width: 90vw;
     gap: 1rem;
+    flex-direction: column;
   }
 
   .page-container {
@@ -342,6 +342,6 @@ body {
   } 
 
   .word {
-    font-size: 6vw
+    font-size: 4.7vw
   }
 }
