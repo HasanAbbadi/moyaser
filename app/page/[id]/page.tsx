@@ -20,19 +20,24 @@ export function generateMetadata({ params: { id } }: any) {
     return { title: `Page ${pages.reverse()}` }
 }
 
-export default function App({ params: { id } }: any) {
-    const pages = findPage(id)
+const mainApi = 'https://moyaser-api.vercel.app'
+
+async function getPages(pageNum: number) {
+    console.log(pageNum)
+    const res = await fetch(`${mainApi}/pages/${pageNum}`, { cache: 'no-store' });
+    return await res.json();
+}
+
+export default async function App({ params: { id } }: any) {
+    const pages = await getPages(id)
+    const numbers = findPage(id)
+    pages.reverse()
+    numbers.reverse()
+
 
     return (
         <>
-            <div id="wrapper">
-                {pages.map((page: number, i: number) => {
-                    return (
-                        /*@ts-expect-error*/
-                        <QuranPage page={page} key={i} />
-                    )
-                })}
-            </div>
+            <QuranPage pages={pages} numbers={numbers} />
         </>
     )
 }

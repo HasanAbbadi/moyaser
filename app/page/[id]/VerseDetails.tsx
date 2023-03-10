@@ -1,15 +1,36 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Modal from "./Modal";
 import Tab from "./Tabs";
 
-export default function DisplayVerseDetails({ word }: any) {
-    // const router = useRouter();
-    // const pathname = usePathname();
+export default function DisplayVerseDetails({ word, setSelectedVerseId, playingVerseId }: any) {
     const [verseModalOpen, setVerseModalOpen] = useState(false)
     const [data, setData] = useState<any>(null)
+
+    // give the playing verse a class of playing.
+    useEffect(() => {
+        const collection = document.getElementsByClassName(playingVerseId);
+        const elements: Array<any> = Array.from(collection)
+
+        const playingCollection = document.getElementsByClassName('playing')
+        const playingElements: Array<any> = Array.from(playingCollection);
+
+        playingElements.forEach(element => {
+            element.classList.remove("playing")
+        })
+
+        elements.forEach(element => {
+            if (element.classList.contains("playing")) {
+                element.classList.remove('playing')
+            } else {
+                element.classList.add('playing')
+            }
+        });
+
+    },
+        [playingVerseId])
 
     function handleHover(e: any) {
         const key: string = e.target.className.split(' ')[1]
@@ -34,57 +55,57 @@ export default function DisplayVerseDetails({ word }: any) {
     }
 
     async function handleClick(e: any) {
-        setVerseModalOpen(!verseModalOpen)
-        console.log(word.verse_id)
-        const res = await fetch(`https://api.hefzmoyaser.net/verses/${word.verse_id}/interactions`)
-        const json = await res.json()
-        const items = [
-            {
-                name: "Tafseer",
-                content: (
-                    <>
-                        <h4>The Tafseer</h4>
-                        <p>{json.tafseer.tafseer}</p>
-                    </>
-                ),
-                is_active: true,
-            },
-            {
-                name: "Meanings",
-                content: (
-                    <>
-                        {json.meanings.map((meaning: any, i: number) => {
-                            return (
-                                <div key={i} className={'details-list'}>
-                                    <h4>{meaning.words}</h4>
-                                    <p>{meaning.meaning}</p>
-                                </div>
-                            )
-                        })}
-                    </>
-                    ),
-                is_active: false,
-            },
-            {
-                name: "Reflections",
-                content: (
-                    <>
-                        {json.reflections.map((ref: any, i: number) => {
-                            return (
-                                <div key={i} className={'details-list'}>
-                                    <h4 className={ref.type}>{ref.type}</h4>
-                                    <p>{ref.reflection}</p>
-                                </div>
-                            )
-                        })}
-                    </>
-                    ),
-                is_active: false,
-            },
-        ];
+        setSelectedVerseId(word.verse_id)
+        // setVerseModalOpen(!verseModalOpen)
+        // const res = await fetch(`https://api.hefzmoyaser.net/verses/${word.verse_id}/interactions`)
+        // const json = await res.json()
+        // const items = [
+        //     {
+        //         name: "Tafseer",
+        //         content: (
+        //             <>
+        //                 <h4>The Tafseer</h4>
+        //                 <p>{json.tafseer.tafseer}</p>
+        //             </>
+        //         ),
+        //         is_active: true,
+        //     },
+        //     {
+        //         name: "Meanings",
+        //         content: (
+        //             <>
+        //                 {json.meanings.map((meaning: any, i: number) => {
+        //                     return (
+        //                         <div key={i} className={'details-list'}>
+        //                             <h4>{meaning.words}</h4>
+        //                             <p>{meaning.meaning}</p>
+        //                         </div>
+        //                     )
+        //                 })}
+        //             </>
+        //             ),
+        //         is_active: false,
+        //     },
+        //     {
+        //         name: "Reflections",
+        //         content: (
+        //             <>
+        //                 {json.reflections.map((ref: any, i: number) => {
+        //                     return (
+        //                         <div key={i} className={'details-list'}>
+        //                             <h4 className={ref.type}>{ref.type}</h4>
+        //                             <p>{ref.reflection}</p>
+        //                         </div>
+        //                     )
+        //                 })}
+        //             </>
+        //             ),
+        //         is_active: false,
+        //     },
+        // ];
 
-        setData(items)
-        console.log(data)
+        // setData(items)
+        // console.log(data)
     }
 
 
@@ -101,7 +122,7 @@ export default function DisplayVerseDetails({ word }: any) {
                 onClick={handleClick}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleHover}
-                className={`${word.char_type_name} ${word.verse_key} section-${word.section}`}
+                className={`${word.char_type_name} ${word.verse_id} section-${word.section}`}
                 style={{ backgroundColor: `var(--${word.color_code})` }}>
                 {word.text_qpc_hafs}
             </p>

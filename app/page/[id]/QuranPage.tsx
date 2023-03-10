@@ -1,51 +1,43 @@
+'use client'
+import { useState } from "react";
+import BottomPlayer from "./BottomBar";
 import DisplayVerseDetails from "./VerseDetails";
 
-const mainApi = 'https://moyaser-api.vercel.app'
-
-async function getPage(pageNum: number) {
-    console.log(pageNum)
-    const res = await fetch(`${mainApi}/page/${pageNum}?format=line_number`);
-    return await res.json();
-}
-
-function Chapter({ chapter }: any) {
+function Chapter({ chapter, setSelectedVerseId, playingVerseId }: any) {
     return (
         <div className="chapter-container">
             {chapter?.map((words: any, i: number) => {
-                return <Line key={i} words={words} />
+                return (
+                    <div key={i} className="line-container">
+                        {words?.map((word: any, i: number) => {
+                            return <DisplayVerseDetails key={i} word={word} {...{setSelectedVerseId, playingVerseId}} />
+                        })}
+                    </div>
+                )
             })}
         </div>
     )
 }
 
-function Line({ words }: any) {
-    return (
-        <div className="line-container">
-            {words?.map((word: any, i: number) => {
-                return <Word key={i} word={word} />
-            })}
-        </div>
-    )
-}
+export default function QuranPage({ pages, numbers }: any) {
+    const [selectedVerseId, setSelectedVerseId] = useState<number>(0)
+    const [playingVerseId, setPlayingVerseId] = useState<number>(0)
 
-function Word({ word }: any) {
     return (
         <>
-        <DisplayVerseDetails word={word} />
-        </>
-    )
-}
+            <div id="wrapper">
 
-
-export default async function QuranPage({ page }: any) {
-    let chapters = await getPage(page)
-
-    return (
-        <div className={"page-container"}>
-            {chapters?.map((chapter: any, i: number) => {
-                return <Chapter key={i} chapter={chapter} />
-            })}
-            <code>{page}</code>
-        </div>
-    )
+                {
+                    pages?.map((chapter: any, i: number) => {
+                        return (
+                            <div key={i} className={"page-container"}>
+                                <Chapter key={i} chapter={chapter} {...{setSelectedVerseId, playingVerseId}} />
+                                <code>{numbers[i]}</code>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+            <BottomPlayer pages={numbers} {...{selectedVerseId, setPlayingVerseId}} />
+        </>)
 }
