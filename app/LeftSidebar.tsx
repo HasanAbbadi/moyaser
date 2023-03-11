@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react"
 
 export default function LeftSidebar({ colorschemes }: any) {
-  const [theme, setTheme] = useState('nord-light')
+  const [theme, setTheme] = useState<any>(
+    typeof window !== "undefined" ? localStorage.getItem('theme') : 'nord-light'
+  )
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', theme)
-    }
+    localStorage.setItem('theme', theme)
   }, [theme])
 
   return (
@@ -20,7 +20,7 @@ export default function LeftSidebar({ colorschemes }: any) {
             return (
               <div className="colorscheme-container" key={i}>
                 <label htmlFor={cs} className="visually-hidden">{cs}</label>
-                <input defaultChecked={localStorage.getItem('theme') === cs} type="radio" name="theme" id={cs}
+                <input defaultChecked={ theme === cs} type="radio" name="theme" id={cs}
                   onChange={(e: any) => { setTheme(e.target.id) }} />
               </div>
             )
