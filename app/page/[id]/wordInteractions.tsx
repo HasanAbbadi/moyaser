@@ -24,6 +24,8 @@ export default function WordInteractions({ word, setSelectedVerseId, playingVers
             }
         });
 
+        collection[0].scrollIntoView({behavior: 'smooth'})
+
     },
         [playingVerseId])
 
