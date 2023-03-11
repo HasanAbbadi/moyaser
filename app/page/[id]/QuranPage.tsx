@@ -4,7 +4,8 @@ import BottomPlayer from "./BottomPlayer";
 import Tab from "../../Tabs";
 import ClickAwayListener from "react-click-away-listener";
 import WordInteractions from "./wordInteractions";
-import { BsFillInfoCircleFill, BsFillPlayCircleFill,} from "react-icons/bs";
+import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill, BsFillInfoCircleFill, BsFillPlayCircleFill } from "react-icons/bs";
+import Link from "next/link";
 
 function Chapter({ chapter, setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }: any) {
     return (
@@ -91,7 +92,6 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
                     <div style={{ top: (popUpCoordinates.y - 70), left: (popUpCoordinates.x - 15) }} className={'popup'}>
                         <button type="button" onClick={() => { setVerseModalOpen(true); setPopUpOpen(false) }} title="info"><BsFillInfoCircleFill /></button>
                         <button type="button" title="play"><BsFillPlayCircleFill /></button>
-                        {/* <p>x:{popUpCoordinates.x}, y:{popUpCoordinates.y}</p> */}
                     </div>
                 </ClickAwayListener>
             )}
@@ -109,17 +109,21 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
 
 
             <div id="wrapper">
+                <Link className="previous-next-page" href={`/page/${parseInt(numbers[0]) + 1}`}><BsFillArrowLeftCircleFill /></Link>
+                <div className="pages-wrapper">
 
-                {
-                    pages?.map((chapter: any, i: number) => {
-                        return (
-                            <div key={i} className={"page-container"}>
-                                <Chapter key={i} chapter={chapter} {...{ setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }} />
-                                <code>{reversedNumbers[i]}</code>
-                            </div>
-                        )
-                    })
-                }
+                    {
+                        pages?.map((chapter: any, i: number) => {
+                            return (
+                                <div key={i} className={"page-container"}>
+                                    <Chapter key={i} chapter={chapter} {...{ setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }} />
+                                    <code>{reversedNumbers[i]}</code>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <Link className="previous-next-page" href={`/page/${parseInt(numbers[1]) - 1}`}><BsFillArrowRightCircleFill /></Link>
             </div>
             <BottomPlayer pages={numbers} {...{ selectedVerseId, setPlayingVerseId }} />
         </>)
