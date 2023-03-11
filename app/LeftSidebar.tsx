@@ -1,5 +1,14 @@
+'use client'
+
+import { useEffect, useState } from "react"
 
 export default function LeftSidebar({ colorschemes }: any) {
+  const [theme, setTheme] = useState('nord-light')
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
     return (
         <form className="color-picker" action="">
           <fieldset>
@@ -9,7 +18,8 @@ export default function LeftSidebar({ colorschemes }: any) {
                 return (
                   <div className="colorscheme-container" key={i}>
                     <label htmlFor={cs} className="visually-hidden">{cs}</label>
-                    <input defaultChecked={colorschemes[0] === cs} type="radio" name="theme" id={cs} />
+                    <input defaultChecked={localStorage.getItem('theme') === cs} type="radio" name="theme" id={cs}
+                     onChange={(e:any) => {setTheme(e.target.id)}} />
                   </div>
                 )
 

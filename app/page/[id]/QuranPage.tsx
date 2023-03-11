@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import BottomPlayer from "./BottomPlayer";
-import Tab from "./Tabs";
+import Tab from "../../Tabs";
 import ClickAwayListener from "react-click-away-listener";
 import WordInteractions from "./wordInteractions";
 import { BsFillInfoCircleFill, BsFillPlayCircleFill,} from "react-icons/bs";
