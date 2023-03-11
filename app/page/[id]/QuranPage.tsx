@@ -33,6 +33,7 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
 
     useEffect(() => {
         if (selectedVerseId <= 0) return;
+        if (!verseModalOpen) return;
         fetch(`https://api.hefzmoyaser.net/verses/${selectedVerseId}/interactions`).then((res) => {
             return res.json()
         }).then(json => {
@@ -97,7 +98,7 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
             )}
             {verseModalOpen && (
                 <div className="modal">
-                    <ClickAwayListener onClickAway={() => setVerseModalOpen(false)}>
+                    <ClickAwayListener onClickAway={() => {setVerseModalOpen(false); setModalData(null)}}>
                         <div className="modal-content">
                             {modalData && (
                                 <Tab items={modalData} />
