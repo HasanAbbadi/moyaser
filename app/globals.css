@@ -201,7 +201,7 @@ body {
   margin: 10px;
   scroll-snap-align: start;
   text-align: center;
-  font-family: 'Montserrat', var(--quran-font);
+  font-family: 'Montserrat', 'Amiri'
 }
 
 .details-list h4:not([class]) {
