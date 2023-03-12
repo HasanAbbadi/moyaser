@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@100;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Amiri:wght@100;400&display=swap");
 
 @font-face {
   font-family: "Mushaf";
@@ -22,6 +22,37 @@
 body {
   background-color: var(--background);
   color: var(--text);
+  font-family: 'Montserrat', Serif;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+  gap: 5px;
+}
+
+.center-content button {
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 100%;
+  background-color: var(--green);
+  border: 0px;
+  text-align: center;
+  margin: 10px;
+}
+
+.center-content button:hover {
+  background-color: black;
+  color: var(--green)
 }
 
 .visually-hidden {
@@ -96,4 +127,142 @@ body {
 
 .color-picker input[type="radio"]:checked {
   background-color: var(--radio-color, currentColor);
+}
+
+.modal {
+  cursor: default;
+  direction: ltr;
+  position: fixed;
+  z-index: 300;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  font-family: "Amiri";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.modal-content {
+  background-color: var(--light-background);
+  width: 30%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+}
+
+.tab .tab-list {
+  padding-bottom: 5px;
+  margin-top: 10px;
+  border-bottom: 2px solid var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab .tab-item {
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.tab .tab-item.active {
+  background-color: var(--background);
+}
+
+.tab .tab-container {
+  display: block;
+  height: 250px;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+}
+
+.tab .tab-content {
+  display: none;
+  direction: rtl;
+}
+
+.tab .tab-content.active {
+  display: block;
+  padding: 10px 15px;
+}
+
+.details-list {
+  background-color: var(--background);
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px;
+  scroll-snap-align: start;
+  text-align: center;
+  font-family: 'Montserrat', var(--quran-font);
+}
+
+.details-list h4:not([class]) {
+  color: var(--blue);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan)
+}
+
+
+.surahs-list {
+  height: 80%;
+  overflow-y: scroll;
+  margin: 15px;
+}
+
+.navigate-modal input {
+  border-radius: 10px;
+  background-color: var(--background);
+  border: 0;
+  padding: 5px;
+  margin: 10px;
+  color: var(--text)
+}
+
+.navigate-modal input::placeholder {
+  font-family: 'Montserrat', serif;
+}
+
+.surah-container {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.surah-container:hover {
+  opacity: 1;
+}
+
+.surahs-list  .surah-container > .surah-titles, .surah-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.surah-titles {
+  flex-direction: row-reverse;
 }
