@@ -266,3 +266,10 @@ body {
 .surah-titles {
   flex-direction: row-reverse;
 }
+
+@media only screen and (max-width: 450px) {
+  .modal-content {
+    width: 80%;
+    height: 60%;
+  }
+}
