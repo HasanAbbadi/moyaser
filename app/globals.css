@@ -48,6 +48,7 @@ body {
   border: 0px;
   text-align: center;
   margin: 10px;
+  transition: all 0.15s ease-in-out;
 }
 
 .center-content button:hover {

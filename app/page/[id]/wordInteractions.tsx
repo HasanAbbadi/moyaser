@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from "react";
+import surahs from "../../../public/surahs.json"
 
 export default function WordInteractions({ word, setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }: any) {
 
@@ -25,7 +26,7 @@ export default function WordInteractions({ word, setSelectedVerseId, playingVers
         });
 
         if (collection[0]) {
-            collection[0].scrollIntoView({behavior: 'smooth'})
+            collection[0].scrollIntoView({ behavior: 'smooth' })
         }
 
     },
@@ -65,7 +66,17 @@ export default function WordInteractions({ word, setSelectedVerseId, playingVers
 
     return (
         <>
-        {/*@ts-ignore*/}
+            {word.location.split(':').slice(1, 3).join(':') === '1:1' && (
+                <div className="chapter-info">
+                    <p>{surahs[word.chapter_id - 1].number}</p>
+                    <div className="titles">
+                        <h1>{surahs[word.chapter_id - 1].name}</h1>
+                        <h1>{surahs[word.chapter_id - 1].englishName}</h1>
+                    </div>
+                    <p>{surahs[word.chapter_id - 1].numberOfAyahs}</p>
+                </div>
+            )}
+
             <div
                 onClick={handleClick}
                 onMouseEnter={handleHover}

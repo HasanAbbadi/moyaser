@@ -108,6 +108,37 @@ body {
   );
 }
 
+.chapter-info {
+  cursor: default;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Montserrat', 'Amiri' !important;
+  line-height: 2;
+  background: var(--background);
+  border-radius: 20px;;
+  padding: 10px;
+  margin: 10px 20px;
+  box-shadow: var(--box-shadow);
+}
+
+.chapter-info .titles {
+  display: flex;
+  gap: 10px;
+  font-size: 0.6rem;
+}
+
+.chapter-info p {
+  text-align: center;
+  background-color: var(--light-background);
+  width: 30px;
+  height: 30px;
+  padding: 0.4rem;
+  border-radius: 100%;
+}
+
 .word {
   padding: 0px 2px;
   margin: 2px 0px;
@@ -308,10 +339,6 @@ body {
 
   .chapter-container {
     width: 100%;
-  }
-
-  .line-container {
-    flex-wrap: nowrap;
   }
 
   .word {
