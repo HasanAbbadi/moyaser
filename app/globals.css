@@ -35,6 +35,10 @@ body {
   gap: 5px;
 }
 
+.center-content h2 {
+  font-size: 2rem;
+}
+
 .center-content button {
   display: inline-flex;
   justify-items: center;
