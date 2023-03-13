@@ -97,7 +97,7 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
                 </ClickAwayListener>
             )}
             {verseModalOpen && (
-                <div className="modal">
+                <div className="modal modal-open">
                     <ClickAwayListener onClickAway={() => {setVerseModalOpen(false); setModalData(null)}}>
                         <div className="modal-content">
                             {modalData && (

@@ -145,7 +145,16 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: all 0.3s ease;
+  transition: all 0.20s ease-in-out;
+  opacity: 0;
+}
+
+.modal-open {
+  opacity: 1;
+}
+
+.modal-close {
+  opacity: 0;
 }
 
 .modal-content {
@@ -230,13 +239,13 @@ body {
 }
 
 
-.surahs-list {
+.surahs-list, .search-list {
   height: 80%;
   overflow-y: scroll;
   margin: 15px;
 }
 
-.navigate-modal input {
+.navigate-modal input, .search-modal input {
   border-radius: 10px;
   background-color: var(--background);
   border: 0;
@@ -249,13 +258,13 @@ body {
   font-family: 'Montserrat', serif;
 }
 
-.surah-container {
+.surah-container, .result-container {
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s ease-in-out;
 }
 
-.surah-container:hover {
+.surah-container:hover, .result-container:hover {
   opacity: 1;
 }
 
@@ -266,6 +275,12 @@ body {
 
 .surah-titles {
   flex-direction: row-reverse;
+}
+
+.result-details {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 @media only screen and (max-width: 450px) {

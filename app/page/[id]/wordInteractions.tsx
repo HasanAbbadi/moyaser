@@ -3,55 +3,57 @@
 import { useEffect } from "react";
 import surahs from "../../../public/surahs.json"
 
+function changeClass(key: any, status: string, scroll: boolean = false) {
+    const collection = document.getElementsByClassName(key);
+    const elements: Array<any> = Array.from(collection)
+
+    const activeCollection = document.getElementsByClassName(status)
+    const activeElements: Array<any> = Array.from(activeCollection);
+
+    if (scroll) {
+        activeElements.forEach(element => {
+            element.classList.remove(status)
+        })
+    }
+
+    elements.forEach(element => {
+        if (element.classList.contains(status)) {
+            element.classList.remove(status)
+        } else {
+            element.classList.add(status)
+        }
+    });
+
+    if (!scroll) {
+        activeElements.forEach(element => {
+            element.classList.remove(status)
+        })
+    }
+
+    if (scroll && collection[0]) {
+        collection[0].scrollIntoView({ behavior: 'smooth' })
+    }
+
+}
+
 export default function WordInteractions({ word, setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }: any) {
+
+    // highlight searched verse
+    useEffect(() => {
+        if (location.href.split('=').pop()) {
+            changeClass(location.href.split('=').pop(), 'highlight', true)
+        }
+    })
 
     // give the playing verse a class of playing.
     useEffect(() => {
-        const collection = document.getElementsByClassName(playingVerseId);
-        const elements: Array<any> = Array.from(collection)
-
-        const playingCollection = document.getElementsByClassName('playing')
-        const playingElements: Array<any> = Array.from(playingCollection);
-
-        playingElements.forEach(element => {
-            element.classList.remove("playing")
-        })
-
-        elements.forEach(element => {
-            if (element.classList.contains("playing")) {
-                element.classList.remove('playing')
-            } else {
-                element.classList.add('playing')
-            }
-        });
-
-        if (collection[0]) {
-            collection[0].scrollIntoView({ behavior: 'smooth' })
-        }
-
+        changeClass(playingVerseId, 'playing', true)
     },
         [playingVerseId])
 
     function handleHover(e: any) {
         const key: string = e.target.className.split(' ')[1]
-        const collection = document.getElementsByClassName(key);
-        const elements: Array<any> = Array.from(collection)
-
-        const hoverCollection = document.getElementsByClassName('hover')
-        const hoverElements: Array<any> = Array.from(hoverCollection);
-
-        elements.forEach(element => {
-            if (element.classList.contains("hover")) {
-                element.classList.remove('hover')
-            } else {
-                element.classList.add('hover')
-            }
-        });
-
-        hoverElements.forEach(element => {
-            element.classList.remove("hover")
-        })
-
+        changeClass(key, 'hover')
     }
 
     async function handleClick(e: any) {
@@ -82,7 +84,7 @@ export default function WordInteractions({ word, setSelectedVerseId, playingVers
                 onMouseEnter={handleHover}
                 onMouseLeave={handleHover}
                 className={`${word.char_type_name} ${word.verse_id} section-${word.section}`}
-                style={{ backgroundColor: `var(--${word.color_code})` }}>
+                style={word.color_code !== null ? { backgroundColor: `var(--${word.color_code})` } : {}}>
                 {word.text_qpc_hafs}
             </div>
         </>

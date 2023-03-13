@@ -18,6 +18,7 @@
   --purple: #b48ead;
   --pink: #b48ead;
   --end: #81a1c1;
+  --gray: #acacac;
 }
 
 .color-picker input[type="radio"]#nord-light {

@@ -163,6 +163,17 @@ body {
     -0.5px 0.5px 0 var(--playing), 0.5px 0.5px 0 var(--playing);
 }
 
+.word.highlight {
+  animation: highlight 4s;
+}
+
+@keyframes highlight {
+  10%   {background-color: var(--red);}
+  45%  {background-color: var(--yellow);}
+  80%  {background-color: var(--green);}
+}
+
+
 .waqfa {
   color: var(--yellow);
 }
