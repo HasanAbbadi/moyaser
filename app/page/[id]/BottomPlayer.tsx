@@ -114,7 +114,7 @@ const DisplayAyah = ({ currentAyah, audioRef, handleNext, isPlaying, ayahLoopTim
     );
 };
 
-export default function BottomPlayer({ pages, selectedVerseId, setPlayingVerseId }: any) {
+export default function BottomPlayer({ pages, verseIdToPlay, setPlayingVerseId }: any) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [ayahIndex, setAyahIndex] = useState(0);
     const [ayahLoopTimes, setAyahLoopTimes] = useState(1);
@@ -159,12 +159,13 @@ export default function BottomPlayer({ pages, selectedVerseId, setPlayingVerseId
     useEffect(() => {
         if (ayat) {
             const index = ayat.findIndex((x: any) => {
-                return x.number === selectedVerseId
+                return x.number === verseIdToPlay
             })
             setAyahIndex(index)
             setAyah(ayat[index])
+            setIsPlaying(true)
         }
-    }, [selectedVerseId])
+    }, [verseIdToPlay])
 
     useEffect(() => {
         if (ayah && isPlaying) {

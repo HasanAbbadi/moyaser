@@ -26,6 +26,7 @@ function Chapter({ chapter, setSelectedVerseId, playingVerseId, setPopUpOpen, se
 export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
     const [selectedVerseId, setSelectedVerseId] = useState<number>(0)
     const [playingVerseId, setPlayingVerseId] = useState<number>(0)
+    const [verseIdToPlay, setVerseIdToPlay] = useState<number>(0)
     const [verseModalOpen, setVerseModalOpen] = useState(false)
     const [popUpOpen, setPopUpOpen] = useState(false)
     const [popUpCoordinates, setPopUpCoordinates] = useState({ x: 0, y: 0 })
@@ -92,7 +93,7 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
                 <ClickAwayListener onClickAway={() => setPopUpOpen(false)}>
                     <div style={{ top: (popUpCoordinates.y - 70), left: (popUpCoordinates.x - 15) }} className={'popup'}>
                         <button type="button" onClick={() => { setVerseModalOpen(true); setPopUpOpen(false) }} title="info"><BsFillInfoCircleFill /></button>
-                        <button type="button" title="play"><BsFillPlayCircleFill /></button>
+                        <button type="button" onClick={() => { setVerseIdToPlay(selectedVerseId); setPopUpOpen(false)}} title="play"><BsFillPlayCircleFill /></button>
                     </div>
                 </ClickAwayListener>
             )}
@@ -126,6 +127,6 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
                 </div>
                 <Link className="previous-next-page" href={`/page/${parseInt(numbers[1]) - 1}`}><BsFillArrowRightCircleFill /></Link>
             </div>
-            <BottomPlayer pages={numbers} {...{ selectedVerseId, setPlayingVerseId }} />
+            <BottomPlayer pages={numbers} {...{ verseIdToPlay, setPlayingVerseId }} />
         </>)
 }
