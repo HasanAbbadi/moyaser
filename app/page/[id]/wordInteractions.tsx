@@ -31,7 +31,7 @@ function changeClass(key: any, status: string, scroll: boolean = false) {
     }
 
     if (scroll && collection[0]) {
-        collection[0].scrollIntoView({ behavior: 'smooth' })
+        collection[0].scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' })
     }
 
 }

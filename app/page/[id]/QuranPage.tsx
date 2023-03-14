@@ -11,6 +11,7 @@ function Chapter({ chapter, setSelectedVerseId, playingVerseId, setPopUpOpen, se
     return (
         <div className="chapter-container">
             {chapter?.map((words: any, i: number) => {
+                const colorGroup:Array<any> = []
                 return (
                     <div key={i} className="line-container">
                         {words?.map((word: any, i: number) => {
@@ -87,6 +88,8 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
 
     }, [verseModalOpen])
 
+    // converts arabic numerals 0-9 to hindi numerals currently used in arabia ۰-۹
+    const e2a = (s:string) => s.replace(/\d/g, (d:any) => '٠١٢٣٤٥٦٧٨٩'[d])
     return (
         <>
             {popUpOpen && (
@@ -119,7 +122,7 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
                             return (
                                 <div key={i} className={"page-container"}>
                                     <Chapter key={i} chapter={chapter} {...{ setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }} />
-                                    <code>{reversedNumbers[i]}</code>
+                                    <h5 className="page-number">{e2a(reversedNumbers[i].toString())}</h5>
                                 </div>
                             )
                         })

@@ -22,7 +22,7 @@
 body {
   background-color: var(--background);
   color: var(--text);
-  font-family: 'Montserrat', Serif;
+  font-family: 'Montserrat', 'Amiri', Serif;
 }
 
 .center-content {
@@ -144,7 +144,6 @@ body {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.25);
-  font-family: "Amiri";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,8 +162,8 @@ body {
 
 .modal-content {
   background-color: var(--light-background);
-  width: 30%;
-  height: 50%;
+  width: 40%;
+  height: 60%;
   top: 0;
   left: 0;
   border-radius: 10px;
@@ -172,8 +171,8 @@ body {
 }
 
 .tab .tab-list {
-  padding-bottom: 5px;
-  margin-top: 10px;
+  padding-bottom: 15px;
+  margin-top: 15px;
   border-bottom: 2px solid var(--background);
   display: flex;
   justify-content: center;
@@ -193,8 +192,8 @@ body {
 
 .tab .tab-container {
   display: block;
-  height: 250px;
-  overflow-y: scroll;
+  height: calc(100vh - 400px);
+  overflow-y: auto;
   scroll-snap-type: y proximity;
 }
 
@@ -215,7 +214,6 @@ body {
   margin: 10px;
   scroll-snap-align: start;
   text-align: center;
-  font-family: 'Montserrat', 'Amiri'
 }
 
 .details-list h4:not([class]) {
@@ -287,9 +285,31 @@ body {
   align-items: center;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 830px) {
   .modal-content {
+    font-size: 3vw !important;
+    width: 70%;
+    height: 70%;
+  }
+
+  .tab .tab-container {
+    height: calc(100vh - 380px);
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .tab .tab-list {
+    font-size: 3.5vw;
+  }
+
+  .modal-content {
+    font-size: 4vw !important;
     width: 80%;
     height: 60%;
   }
+
+  .tab .tab-container {
+    height: calc(100vh - 430px);
+  }
+
 }
