@@ -6,7 +6,6 @@ import ClickAwayListener from "react-click-away-listener";
 import WordInteractions from "./wordInteractions";
 import { BsArrowBarLeft, BsArrowBarRight, BsEyeFill, BsEyeSlashFill, BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill, BsFillInfoCircleFill, BsFillPlayCircleFill } from "react-icons/bs";
 import Link from "next/link";
-import Bookmark from "./Bookmark";
 
 function Chapter({ chapter, setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }: any) {
     return (
