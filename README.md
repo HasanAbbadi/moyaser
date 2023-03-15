@@ -18,6 +18,7 @@ Here are the most prominent features:
 * [x] Memorize in sections. Don't rush!
 * [x] Get the tafseer and meanings of words.
 * [x] Stop and reflect with the reflections tab!
+* [x] Hide verses to test yourself.
 * [x] Minimal and fast, with all the necessary tools to help you in your journey.
 * [x] Customizable, make it your own. (6 themes and counting!)
 * [x] Listen to the verses and repeat them to stick longer.
