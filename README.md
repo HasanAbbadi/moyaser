@@ -4,7 +4,7 @@ Memorize the quran faster and more efficiently using color coded words and secti
 
 <p align="center">
 <a href="https://github.com/movie-web/movie-web/actions"><img alt="Github Checks Status" src="https://img.shields.io/github/checks-status/HasanAbbadi/moyaser/main"></a>
-<a href="https://github.com/movie-web/movie-web/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/HasanAbbadi/moyaser"></a>
+<a href="https://github.com/HasanAbbadi/moyaser/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/HasanAbbadi/moyaser?color=lightgrey"></a>
 
 ![](https://i.imgur.com/OW5eDtr.png)
 </p>
