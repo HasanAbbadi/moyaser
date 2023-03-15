@@ -153,6 +153,7 @@ body {
   margin: 2px 0px;
   text-shadow: var(--text-shadow);
   font-size: 1.9vw;
+  transition: color 0.2s ease-in-out;
 }
 
 .end {
@@ -183,6 +184,28 @@ body {
   80% {
     background-color: var(--green);
   }
+}
+
+.word.hidden {
+  color: transparent;
+  position: relative;
+}
+
+.word.hidden:after {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 93%;
+  height: 2px;
+  background: black;
+  opacity: 1;
+}
+
+.word.hidden:hover {
+  color: var(--text);
 }
 
 .waqfa {
@@ -344,6 +367,37 @@ body {
   height: 25px;
   background: var(--cyan);
   cursor: pointer;
+}
+
+#test-mode-container {
+  display: flex;
+}
+
+#test-mode-container > .popup {
+  position: fixed;
+  background-color: var(--cyan);
+  box-shadow: var(--box-shadow);
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s ease;
+  opacity: 1;
+}
+
+#test-mode-container > .popup:hover {
+  background-color: var(--blue)
+}
+
+#test-mode-container > .popup > button {
+  color: var(--text);
+}
+
+#test-mode-container > .popup:hover > button:hover {
+  color: white;
+}
+
+#body-wrapper:has(#audio-player:hover) #test-mode-container > .popup {
+  transform: translate(-50%, -230%);
 }
 
 @media only screen and (max-width: 830px) {

@@ -83,7 +83,7 @@ export default function WordInteractions({ word, setSelectedVerseId, playingVers
                 onClick={handleClick}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleHover}
-                className={`${word.char_type_name} ${word.verse_id} section-${word.section}`}
+                className={`${word.char_type_name} v${word.verse_id} ${word.verse_id} section-${word.section}`}
                 style={word.color_code !== null ? { backgroundColor: `var(--${word.color_code})` } : {}}>
                 {word.text_qpc_hafs}
             </div>

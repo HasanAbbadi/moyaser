@@ -4,14 +4,14 @@ import BottomPlayer from "./BottomPlayer";
 import Tab from "../../Tabs";
 import ClickAwayListener from "react-click-away-listener";
 import WordInteractions from "./wordInteractions";
-import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill, BsFillInfoCircleFill, BsFillPlayCircleFill } from "react-icons/bs";
+import { BsArrowBarLeft, BsArrowBarRight, BsEyeFill, BsEyeSlashFill, BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill, BsFillInfoCircleFill, BsFillPlayCircleFill } from "react-icons/bs";
 import Link from "next/link";
+import Bookmark from "./Bookmark";
 
 function Chapter({ chapter, setSelectedVerseId, playingVerseId, setPopUpOpen, setPopUpCoordinates }: any) {
     return (
         <div className="chapter-container">
             {chapter?.map((words: any, i: number) => {
-                const colorGroup:Array<any> = []
                 return (
                     <div key={i} className="line-container">
                         {words?.map((word: any, i: number) => {
@@ -31,6 +31,7 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
     const [verseModalOpen, setVerseModalOpen] = useState(false)
     const [popUpOpen, setPopUpOpen] = useState(false)
     const [popUpCoordinates, setPopUpCoordinates] = useState({ x: 0, y: 0 })
+    const [testMode, setTestMode] = useState(false)
     const [modalData, setModalData] = useState<any>(null)
 
     useEffect(() => {
@@ -88,27 +89,62 @@ export default function QuranPage({ pages, numbers, reversedNumbers }: any) {
 
     }, [verseModalOpen])
 
+
+    // add a class of hidden each time 
+    useEffect(() => {
+        const collection = document.querySelectorAll(`.line-container:has(.word.v${selectedVerseId.toString()}) ~ .line-container > .word`);
+        const elements: Array<any> = Array.from(collection)
+
+        const hiddenCollection = document.getElementsByClassName('hidden')
+        const hiddenElements: Array<any> = Array.from(hiddenCollection);
+
+        hiddenElements.forEach(element => {
+            element.classList.remove('hidden')
+        })
+
+        if (!testMode) return;
+        if (elements.length > 0) {
+            elements.forEach(element => {
+                element.classList.add('hidden')
+            });
+        } else {
+            setTestMode(false)
+        }
+
+    }, [testMode, selectedVerseId])
+
     // converts arabic numerals 0-9 to hindi numerals currently used in arabia ۰-۹
-    const e2a = (s:string) => s.replace(/\d/g, (d:any) => '٠١٢٣٤٥٦٧٨٩'[d])
+    const e2a = (s: string) => s.replace(/\d/g, (d: any) => '٠١٢٣٤٥٦٧٨٩'[d])
     return (
         <>
             {popUpOpen && (
                 <ClickAwayListener onClickAway={() => setPopUpOpen(false)}>
                     <div style={{ top: (popUpCoordinates.y - 70), left: (popUpCoordinates.x - 15) }} className={'popup'}>
                         <button type="button" onClick={() => { setVerseModalOpen(true); setPopUpOpen(false) }} title="info"><BsFillInfoCircleFill /></button>
-                        <button type="button" onClick={() => { setVerseIdToPlay(selectedVerseId); setPopUpOpen(false)}} title="play"><BsFillPlayCircleFill /></button>
+                        <button type="button" onClick={() => { setTestMode(!testMode); setPopUpOpen(false) }} title="test"><BsEyeSlashFill /></button>
+                        <button type="button" onClick={() => { setVerseIdToPlay(selectedVerseId); setPopUpOpen(false) }} title="play"><BsFillPlayCircleFill /></button>
                     </div>
                 </ClickAwayListener>
             )}
             {verseModalOpen && (
                 <div className="modal modal-open">
-                    <ClickAwayListener onClickAway={() => {setVerseModalOpen(false); setModalData(null)}}>
+                    <ClickAwayListener onClickAway={() => { setVerseModalOpen(false); setModalData(null) }}>
                         <div className="modal-content">
                             {modalData && (
                                 <Tab items={modalData} />
                             )}
                         </div>
                     </ClickAwayListener>
+                </div>
+            )}
+
+            {testMode && (
+                <div id="test-mode-container">
+                    <div className="popup">
+                        <button title="reveal next" onClick={() => { setSelectedVerseId(selectedVerseId + 1) }}><BsArrowBarLeft /></button>
+                        <button title="hide previous" onClick={() => { setSelectedVerseId(selectedVerseId - 1) }}><BsArrowBarRight /></button>
+                        <button title="show all" onClick={() => { setTestMode(false) }}><BsEyeFill /></button>
+                    </div>
                 </div>
             )}
 
